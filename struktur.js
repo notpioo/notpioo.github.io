@@ -56,31 +56,54 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "none";
     }
   };
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebarToggle = document.querySelector(".sidebar-toggle");
-  const sidebar = document.querySelector(".sidebar");
-  const mainContent = document.querySelector(".main-content");
+  document.addEventListener("DOMContentLoaded", function () {
+    const navToggle = document.querySelector(".nav-toggle");
+    const navList = document.querySelector(".nav-list");
 
-  sidebarToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("active");
-    mainContent.classList.toggle("sidebar-active");
+    navToggle.addEventListener("click", function () {
+      navList.classList.toggle("show");
+      this.innerHTML = navList.classList.contains("show")
+        ? '<i class="fas fa-times"></i>'
+        : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      const isClickInside =
+        navToggle.contains(event.target) || navList.contains(event.target);
+      if (!isClickInside && navList.classList.contains("show")) {
+        navList.classList.remove("show");
+        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 768 && navList.classList.contains("show")) {
+        navList.classList.remove("show");
+        navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
   });
 
-  // Menutup sidebar saat mengklik di luar sidebar
-  document.addEventListener("click", function (event) {
-    const isClickInsideSidebar = sidebar.contains(event.target);
-    const isClickOnToggle = sidebarToggle.contains(event.target);
-
-    if (
-      !isClickInsideSidebar &&
-      !isClickOnToggle &&
-      sidebar.classList.contains("active")
-    ) {
-      sidebar.classList.remove("active");
-      mainContent.classList.remove("sidebar-active");
+  // Scroll effect
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 50) {
+      navigation.classList.add("scrolled");
+    } else {
+      navigation.classList.remove("scrolled");
     }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
   });
 
   // Menangani scroll
