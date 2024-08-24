@@ -2,7 +2,7 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Struktur Organisasi HIMAIF</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="struktur.css" />
@@ -12,10 +12,13 @@
     />
   </head>
   <body>
-    <header>
-      <nav>
-        <a href="#" class="logo"> <i class="fas fa-laptop-code"></i> HIMAIF </a>
-        <ul class="nav-links">
+    <class class="sidebar">  
+      <button class="sidebar-toggle">&#9776;</button>  
+      <nav class="sidebar-nav">  
+        <ul> 
+          <li>
+            <a href="#" class="logo"> <i class="fas fa-laptop-code"></i> HIMAIF </a>
+          </li>
           <li>
             <a href="index.html"><i class="fas fa-home"></i> Beranda</a>
           </li>
@@ -31,11 +34,11 @@
           <li>
             <a href="#"><i class="fas fa-envelope"></i> Kontak</a>
           </li>
+          <li><a href="#" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+          </li>
         </ul>
-        <a href="#" class="login-btn"
-          ><i class="fas fa-sign-in-alt"></i> Login</a
-        >
       </nav>
+    </class>
     </header>
 
     <main>

@@ -1,3 +1,51 @@
+.navigation {
+  background-color: #333;
+  padding: 10px;
+}
+
+.navigation ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navigation li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+}
+
+.menu-icon {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-list {
+    display: none;
+  }
+
+  .nav-list.show {
+    display: block;
+  }
+
+  .navigation li {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
 :root {
   --primary-color: #6c63ff;
   --secondary-color: #4a47a3;
