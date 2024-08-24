@@ -3,57 +3,68 @@
   position: fixed;
   height: 100%;
   background: #f4f4f4;
-  left: 0;
+  left: -250px; /* Mulai tersembunyi */
   top: 0;
   transition: 0.3s;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  left: 0;
 }
 
 .sidebar-nav ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-nav li:last-child {
+  border-bottom: none;
 }
 
 .sidebar-nav li a {
   display: block;
-  padding: 10px 15px;
+  padding: 15px 20px;
   text-decoration: none;
   color: #333;
+  transition: background 0.3s;
+}
+
+.sidebar-nav li a:hover {
+  background: #e0e0e0;
 }
 
 .sidebar-toggle {
-  display: none;
-  background: none;
+  display: block; /* Selalu tampilkan tombol toggle */
+  background: #333;
+  color: white;
   border: none;
   font-size: 24px;
   cursor: pointer;
-  padding: 10px;
+  padding: 10px 15px;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 1001;
 }
 
 .main-content {
-  margin-left: 250px;
+  margin-left: 0; /* Tidak ada margin default */
   padding: 20px;
+  transition: 0.3s;
 }
 
-@media screen and (max-width: 768px) {
-  .sidebar {
-    left: -250px;
-  }
-
-  .sidebar.active {
-    left: 0;
-  }
-
-  .sidebar-toggle {
-    display: block;
-    position: fixed;
-    left: 10px;
-    top: 10px;
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
+.main-content.sidebar-active {
+  margin-left: 250px;
 }
+
+/* Tidak perlu media query karena perilaku sama di semua ukuran layar */
 
 :root {
   --primary-color: #6c63ff;

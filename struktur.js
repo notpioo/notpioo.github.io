@@ -61,8 +61,43 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const sidebarToggle = document.querySelector(".sidebar-toggle");
   const sidebar = document.querySelector(".sidebar");
+  const mainContent = document.querySelector(".main-content");
 
   sidebarToggle.addEventListener("click", function () {
     sidebar.classList.toggle("active");
+    mainContent.classList.toggle("sidebar-active");
   });
+
+  // Menutup sidebar saat mengklik di luar sidebar
+  document.addEventListener("click", function (event) {
+    const isClickInsideSidebar = sidebar.contains(event.target);
+    const isClickOnToggle = sidebarToggle.contains(event.target);
+
+    if (
+      !isClickInsideSidebar &&
+      !isClickOnToggle &&
+      sidebar.classList.contains("active")
+    ) {
+      sidebar.classList.remove("active");
+      mainContent.classList.remove("sidebar-active");
+    }
+  });
+
+  // Menangani scroll
+  let lastScrollTop = 0;
+  window.addEventListener(
+    "scroll",
+    function () {
+      let st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) {
+        // Scroll ke bawah
+        sidebarToggle.style.top = "10px";
+      } else {
+        // Scroll ke atas
+        sidebarToggle.style.top = "10px";
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
+    },
+    false
+  );
 });
