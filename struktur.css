@@ -1,0 +1,409 @@
+:root {
+  --primary-color: #6c63ff;
+  --secondary-color: #4caf50;
+  --bg-color: #f5f7fa;
+  --text-color: #333;
+  --secondary-text-color: #666;
+  --white: #ffffff;
+}
+
+/* Hero section */
+.hero-s {
+  background-image: linear-gradient(
+      135deg,
+      rgba(108, 99, 255, 0.8),
+      rgba(255, 101, 132, 0.8)
+    ),
+    url("assets/hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  margin-top: 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-s::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("assets/pattern.svg");
+  opacity: 0.1;
+  animation: move-background 20s linear infinite;
+}
+
+@keyframes move-background {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+  to {
+    transform: translateX(-100%) translateY(-100%);
+  }
+}
+
+.hero-s-content {
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-s h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fade-in-up 1s ease;
+}
+
+.hero-s p {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  animation: fade-in-up 1s ease 0.3s both;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.struktur-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("struktur-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: var(--white);
+  text-align: center;
+  padding: 8rem 0;
+}
+
+.struktur-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.struktur-hero p {
+  font-size: 1.2rem;
+}
+
+.org-structure {
+  padding: 6rem 0;
+  background-color: var(--bg-color);
+}
+
+.org-tree {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.org-tree ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  position: relative;
+}
+
+.org-tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  padding: 20px 5px 0 5px;
+  position: relative;
+}
+
+.org-tree li::before,
+.org-tree li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid var(--primary-color);
+  width: 50%;
+  height: 20px;
+}
+
+.org-tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid var(--primary-color);
+}
+
+.org-tree li:only-child::after,
+.org-tree li:only-child::before {
+  display: none;
+}
+
+.org-tree li:only-child {
+  padding-top: 0;
+}
+
+.org-tree li:first-child::before,
+.org-tree li:last-child::after {
+  border: 0 none;
+}
+
+.org-tree li:last-child::before {
+  border-right: 2px solid var(--primary-color);
+  border-radius: 0 5px 0 0;
+}
+
+.org-tree li:first-child::after {
+  border-radius: 5px 0 0 0;
+}
+
+.org-tree ul ul::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid var(--primary-color);
+  width: 0;
+  height: 20px;
+}
+
+.org-node {
+  border: 2px solid var(--primary-color);
+  padding: 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 12px;
+  display: inline-block;
+  min-width: 180px;
+  min-height: 100px;
+  background-color: var(--white);
+  border-radius: 10px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.org-node:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.org-node i {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  transition: all 0.3s;
+}
+
+.org-node:hover i {
+  color: var(--white);
+  transform: rotate(-15deg);
+}
+
+.org-node h3 {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.org-node p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.org-departments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Tambahkan atau perbarui bagian modal di struktur.css */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: var(--white);
+  margin: 10% auto;
+  padding: 0;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalFadeIn 0.5s;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 20px;
+  position: relative;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.close {
+  color: var(--white);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.member-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.member-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+  border: 3px solid var(--primary-color);
+}
+
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.member-details {
+  flex: 1;
+}
+
+.member-details p {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.member-details i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.member-motto {
+  background-color: #f0f0f0;
+  border-left: 4px solid var(--primary-color);
+  padding: 15px;
+  margin-top: 20px;
+  font-style: italic;
+  position: relative;
+}
+
+.member-motto::before {
+  content: "\201C";
+  font-size: 60px;
+  color: var(--primary-color);
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}
+
+.member-motto p {
+  margin: 0;
+  padding-left: 30px;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .org-tree {
+    display: block;
+  }
+
+  .org-tree ul {
+    padding-left: 0;
+  }
+
+  .org-tree li {
+    float: none;
+    display: block;
+    padding: 20px 0 0 0;
+  }
+
+  .org-tree li::before,
+  .org-tree li::after,
+  .org-tree ul ul::before {
+    display: none;
+  }
+
+  .org-departments {
+    flex-direction: column;
+    align-items: center;
+  }
+}
